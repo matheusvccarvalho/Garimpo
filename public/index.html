@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Achadinhos - Os melhores produtos, ofertas e descobertas da internet. Encontre produtos úteis, baratos e interessantes com curadoria especial.">
+    <meta property="og:title" content="Achadinhos - Produtos que valem a pena">
+    <meta property="og:description" content="Descubra produtos incríveis, ofertas imperdíveis e achadinhos selecionados para você.">
+    <meta property="og:type" content="website">
+    <title>Achadinhos - Produtos que valem a pena comprar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-main">Achadinhos</span>
+                    <span class="logo-sub">Produtos que valem a pena</span>
+                </a>
+                <nav class="nav-menu" id="navMenu">
+                    <a href="/">Início</a>
+                    <a href="/ofertas">Ofertas</a>
+                    <a href="/mais-vendidos">Mais vendidos</a>
+                    <a href="/categorias">Categorias</a>
+                    <a href="/novidades">Novidades</a>
+                </nav>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar achadinhos...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" title="Favoritos">❤️</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>✨</span>
+                    <span>Curadoria diária de produtos</span>
+                </div>
+                <h1>Achamos os produtos que você vai querer comprar</h1>
+                <p>Ofertas, produtos úteis e achadinhos incríveis que encontramos especialmente para você economizar e comprar melhor.</p>
+                <a href="#achadinhos" class="btn btn-primary btn-large">Ver achadinhos</a>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-badge">-40%</div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300" alt="Fone Bluetooth">
+                    <p class="card-name">Fone Bluetooth Pro</p>
+                    <p class="card-price">R$ 89,90</p>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-badge">-33%</div>
+                    <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d?w=300" alt="Smartwatch">
+                    <p class="card-name">Smartwatch Fitness</p>
+                    <p class="card-price">R$ 199,90</p>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-badge">-47%</div>
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300" alt="Caixa de Som">
+                    <p class="card-name">Caixa de Som Portátil</p>
+                    <p class="card-price">R$ 149,90</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Categorias</h2>
+                <p class="section-subtitle">Encontre produtos por categoria</p>
+            </div>
+            <div class="categorias-scroll" id="categoriasScroll"></div>
+        </div>
+    </section>
+
+    <!-- Achadinhos do Dia -->
+    <section class="section" id="achadinhos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Achadinhos do dia</h2>
+                <p class="section-subtitle">Produtos que encontramos e achamos que você vai curtir</p>
+            </div>
+            <div class="produtos-grid" id="ofertasGrid"></div>
+        </div>
+    </section>
+
+    <!-- Achado do Dia (Destaque) -->
+    <section class="ofertas-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Achado especial</h2>
+                <p class="section-subtitle">Seleção premium de hoje</p>
+            </div>
+            <div id="achadoDia"></div>
+        </div>
+    </section>
+
+    <!-- Em Alta -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Em alta agora</h2>
+                <p class="section-subtitle">Os produtos mais populares do momento</p>
+            </div>
+            <div class="produtos-grid" id="popularesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Ofertas -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ofertas que valem a pena</h2>
+                <p class="section-subtitle">Descontos reais em produtos selecionados</p>
+            </div>
+            <div class="produtos-grid" id="ofertasDestaque"></div>
+        </div>
+    </section>
+
+    <!-- Novidades -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Novidades</h2>
+                <p class="section-subtitle">Os últimos achadinhos adicionados</p>
+            </div>
+            <div class="produtos-grid" id="recentesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Achadinhos</h3>
+                    <p>Encontramos os melhores produtos, ofertas e descobertas da internet para você economizar e comprar melhor.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <a href="/">Início</a>
+                    <a href="/ofertas">Ofertas</a>
+                    <a href="/categorias">Categorias</a>
+                    <a href="/mais-vendidos">Mais vendidos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Categorias</h4>
+                    <a href="/categoria/tecnologia">Tecnologia</a>
+                    <a href="/categoria/casa">Casa</a>
+                    <a href="/categoria/moda">Moda</a>
+                    <a href="/categoria/games">Games</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Informações</h4>
+                    <p>Os links de produtos podem ser links de afiliados. Ao comprar através deles, podemos receber uma comissão sem custo adicional para você.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Achadinhos. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

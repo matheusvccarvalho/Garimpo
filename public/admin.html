@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Achadinhos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <a href="/" style="text-decoration: none;">
+                <span class="logo-main">Achadinhos</span>
+                <span class="logo-sub">Painel Administrativo</span>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-link active" data-view="dashboard">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-link" data-view="produtos">
+                <span class="nav-icon">📦</span>
+                <span>Produtos</span>
+                <span class="nav-badge" id="produtosBadge">0</span>
+            </button>
+            <button class="nav-link" data-view="categorias">
+                <span class="nav-icon">🗂️</span>
+                <span>Categorias</span>
+            </button>
+            <button class="nav-link" data-view="ofertas">
+                <span class="nav-icon">🔥</span>
+                <span>Ofertas</span>
+            </button>
+            <button class="nav-link" data-view="afiliados">
+                <span class="nav-icon">🔗</span>
+                <span>Links de Afiliado</span>
+            </button>
+            <button class="nav-link" data-view="configuracoes">
+                <span class="nav-icon">⚙️</span>
+                <span>Configurações</span>
+            </button>
+            
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--color-border-light);">
+                <a href="/" target="_blank" class="nav-link">
+                    <span class="nav-icon">🌐</span>
+                    <span>Ver site</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-user-info">
+                <div class="admin-avatar" id="adminAvatar">A</div>
+                <div>
+                    <div class="user-name" id="adminNome">Administrador</div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <span>🚪</span>
+                <span>Sair</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+        <!-- TOPBAR -->
+        <div class="admin-topbar">
+            <div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="welcome-text" id="welcomeText">Olá, administrador 👋 Veja o desempenho dos seus achadinhos.</div>
+            </div>
+        </div>
+
+        <!-- ========== DASHBOARD VIEW ========== -->
+        <section id="view-dashboard" class="admin-view active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Produtos cadastrados</div>
+                            <div class="stat-value" id="statTotalProdutos">0</div>
+                            <div class="stat-trend neutral">Total acumulado</div>
+                        </div>
+                        <div class="stat-icon">📦</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Produtos ativos</div>
+                            <div class="stat-value" id="statProdutosAtivos">0</div>
+                            <div class="stat-trend">✓ Visíveis no site</div>
+                        </div>
+                        <div class="stat-icon green">✓</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Categorias</div>
+                            <div class="stat-value" id="statTotalCategorias">0</div>
+                            <div class="stat-trend neutral">Organizadas</div>
+                        </div>
+                        <div class="stat-icon yellow">🗂️</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Cliques hoje</div>
+                            <div class="stat-value" id="statCliquesHoje">0</div>
+                            <div class="stat-trend">📈 Nas últimas 24h</div>
+                        </div>
+                        <div class="stat-icon purple">🖱️</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Cliques (7 dias)</div>
+                            <div class="stat-value" id="statCliques7">0</div>
+                            <div class="stat-trend neutral">Esta semana</div>
+                        </div>
+                        <div class="stat-icon">📅</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div>
+                            <div class="stat-label">Total de cliques</div>
+                            <div class="stat-value" id="statCliquesTotal">0</div>
+                            <div class="stat-trend neutral">Histórico completo</div>
+                        </div>
+                        <div class="stat-icon purple">🎯</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div>
+                        <h3>🏆 Produtos mais acessados</h3>
+                        <div class="card-subtitle">Os achadinhos que mais geraram cliques</div>
+                    </div>
+                </div>
+                <div class="table-container" id="produtosMaisClicados">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📊</div>
+                        <h4>Carregando dados...</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="admin-card">
+                    <h3 style="margin-bottom: 12px;">⭐ Produto destaque</h3>
+                    <div id="produtoMaisClicado" class="empty-state" style="padding: 20px;">
+                        <p>Nenhum destaque ainda</p>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <h3 style="margin-bottom: 12px;">🗂️ Categoria mais acessada</h3>
+                    <div id="categoriaMaisAcessada" class="empty-state" style="padding: 20px;">
+                        <p>Nenhum dado ainda</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PRODUTOS VIEW ========== -->
+        <section id="view-produtos" class="admin-view">
+            <div class="admin-toolbar">
+                <div class="admin-search">
+                    <input type="text" id="buscaProdutos" placeholder="Buscar produto...">
+                </div>
+                <select class="admin-filter-select" id="filtroCategoria">
+                    <option value="">Todas as categorias</option>
+                </select>
+                <select class="admin-filter-select" id="filtroStatus">
+                    <option value="">Todos os status</option>
+                    <option value="ativo">Ativos</option>
+                    <option value="inativo">Inativos</option>
+                </select>
+                <select class="admin-filter-select" id="filtroDestaque">
+                    <option value="">Todos</option>
+                    <option value="sim">Em destaque</option>
+                    <option value="nao">Sem destaque</option>
+                </select>
+                <button class="btn btn-primary" id="btnNovoProduto">
+                    <span>+</span> Adicionar produto
+                </button>
+            </div>
+
+            <div class="admin-card" style="padding: 0;">
+                <div class="table-container" id="tabelaProdutos">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📦</div>
+                        <h4>Carregando produtos...</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CATEGORIAS VIEW ========== -->
+        <section id="view-categorias" class="admin-view">
+            <div class="admin-toolbar">
+                <div class="admin-search">
+                    <input type="text" id="buscaCategorias" placeholder="Buscar categoria...">
+                </div>
+                <button class="btn btn-primary" id="btnNovaCategoria" style="margin-left: auto;">
+                    <span>+</span> Nova categoria
+                </button>
+            </div>
+
+            <div class="admin-card" style="padding: 0;">
+                <div class="table-container" id="tabelaCategorias">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🗂️</div>
+                        <h4>Carregando categorias...</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== OFERTAS VIEW ========== -->
+        <section id="view-ofertas" class="admin-view">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div>
+                        <h3>🔥 Produtos em oferta</h3>
+                        <div class="card-subtitle">Produtos com desconto ativo</div>
+                    </div>
+                </div>
+                <div class="table-container" id="tabelaOfertas">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔥</div>
+                        <h4>Carregando ofertas...</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== AFILIADOS VIEW ========== -->
+        <section id="view-afiliados" class="admin-view">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div>
+                        <h3>🔗 Links de afiliado</h3>
+                        <div class="card-subtitle">Gerencie seus links de afiliado Shopee</div>
+                    </div>
+                </div>
+                <div class="table-container" id="tabelaAfiliados">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔗</div>
+                        <h4>Carregando links...</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONFIGURACOES VIEW ========== -->
+        <section id="view-configuracoes" class="admin-view">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div>
+                        <h3>⚙️ Informações do site</h3>
+                        <div class="card-subtitle">Configurações gerais da plataforma</div>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nome da plataforma</label>
+                        <input type="text" value="Achadinhos" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Slogan</label>
+                        <input type="text" value="Produtos que valem a pena" readonly>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Descrição (SEO)</label>
+                        <textarea rows="3" readonly>Encontramos os melhores produtos, ofertas e descobertas da internet para você economizar.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram</label>
+                        <input type="text" placeholder="@seuinstagram" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>TikTok</label>
+                        <input type="text" placeholder="@seutiktok" value="">
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 16px; background: #FFF9E6; border-radius: 8px; font-size: 13px; color: #946300;">
+                    💡 <strong>Em breve:</strong> Configurações completas de SEO, redes sociais e integrações.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL PRODUTO -->
+    <div class="modal-overlay" id="modalProduto">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="formTitulo">Novo produto</h3>
+                <button class="modal-close" id="fecharModalProduto">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="formProduto">
+                    <input type="hidden" id="produtoId">
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Nome do produto *</label>
+                            <input type="text" id="pNome" required placeholder="Ex: Fone Bluetooth Pro">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preço atual (R$) *</label>
+                            <input type="number" step="0.01" id="pPreco" required placeholder="89.90">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preço antigo (R$)</label>
+                            <input type="number" step="0.01" id="pPrecoAnterior" placeholder="149.90">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Categoria *</label>
+                            <select id="pCategoria" required>
+                                <option value="">Selecione...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>URL da imagem *</label>
+                            <input type="url" id="pImagem" required placeholder="https://...">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Link de afiliado Shopee *</label>
+                            <input type="url" id="pLinkAfiliado" required placeholder="https://shopee.com.br/...">
+                            <button type="button" class="btn-ai" id="gerarIA" style="margin-top: 8px;">
+                                ✨ Gerar com IA (em breve)
+                            </button>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Descrição</label>
+                            <textarea id="pDescricao" rows="3" placeholder="Descreva o produto..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="pDestaque">
+                                <span>⭐ Produto em destaque</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="pAtivo" checked>
+                                <span>✓ Produto ativo</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelarForm">Cancelar</button>
+                <button class="btn btn-primary" id="salvarProduto">Salvar produto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CATEGORIA -->
+    <div class="modal-overlay" id="modalCategoria">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="formCategoriaTitulo">Nova categoria</h3>
+                <button class="modal-close" id="fecharModalCategoria">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="formCategoria">
+                    <input type="hidden" id="categoriaId">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Nome da categoria *</label>
+                            <input type="text" id="cNome" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Descrição</label>
+                            <textarea id="cDescricao" rows="2"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>URL da imagem</label>
+                            <input type="url" id="cImagem" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="cAtivo" checked>
+                                <span>✓ Categoria ativa</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelarCategoriaForm">Cancelar</button>
+                <button class="btn btn-primary" id="salvarCategoria">Salvar categoria</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

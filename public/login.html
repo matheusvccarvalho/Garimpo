@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Achadinhos | Área Administrativa</title>
+    <meta name="description" content="Acesse o painel administrativo do Achadinhos para gerenciar produtos, categorias e ofertas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <a href="/" class="logo-center">
+            <span class="logo-main">Achadinhos</span>
+            <span class="logo-sub">Produtos que valem a pena</span>
+        </a>
+
+        <div class="auth-card">
+            <h2>Bem-vindo de volta 👋</h2>
+            <p class="auth-subtitle">Entre com suas credenciais para acessar o painel administrativo.</p>
+
+            <form id="loginForm" class="form" autocomplete="off">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="seu@email.com"
+                        autocomplete="username"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        name="senha" 
+                        required 
+                        placeholder="••••••••"
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <div id="loginError" class="form-error"></div>
+                
+                <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                    <span id="btnText">Entrar no painel</span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <span>🔒 Área administrativa restrita</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>
